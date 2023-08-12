@@ -1,0 +1,19 @@
+.header {
+  padding: 2.2rem 0rem;
+  background-color: #fff;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0rem 15rem 0rem 15rem;
+}
+
+.header__container span:hover {
+  cursor: pointer;
+}
+
+.header__icon {
+  transform: translateY(3px);
+}

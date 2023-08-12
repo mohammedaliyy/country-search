@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap");
 
 * {
   margin: 0;
@@ -8,8 +6,12 @@
   box-sizing: border-box;
 }
 
-body {
+html {
+  font-size: 65%;
 }
-.he {
-  margin-left: 200px;
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.6rem;
+  background-color: #f2f2f2;
 }
