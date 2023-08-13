@@ -2,20 +2,8 @@ import { useState } from "react";
 import { BiDownArrow } from "react-icons/bi";
 import "./SearchFilter.css";
 
-function SearchFilter() {
-  const [inputVal, setInputVal] = useState("");
+function SearchFilter({ handleFormSubmit, inputVal }) {
   const [animate, setAnimate] = useState(false);
-
-  //   Handling input value
-  const handleInputChange = (e) => {
-    setInputVal(e.target.value);
-    console.log(e.target.value);
-  };
-
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    setInputVal("");
-  };
 
   //   Toggling Icon
 
@@ -31,10 +19,8 @@ function SearchFilter() {
           name="text"
           id="text"
           placeholder="Search for a country..."
-          value={inputVal}
-          onChange={handleInputChange}
+          ref={inputVal}
         />
-        <h4>{inputVal}</h4>
       </form>
 
       <div className="search__filter">
