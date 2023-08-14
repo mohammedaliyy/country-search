@@ -1,6 +1,6 @@
 .header {
   padding: 2.2rem 0rem;
-  background-color: #fff;
+  background-color: var(--light-mode-white);
 }
 
 .header__container {

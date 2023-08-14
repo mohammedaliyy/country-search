@@ -1,16 +1,13 @@
-import { useState } from "react";
 import { BiDownArrow } from "react-icons/bi";
 import "./SearchFilter.css";
 
-function SearchFilter({ handleFormSubmit, inputVal }) {
-  const [animate, setAnimate] = useState(false);
-
-  //   Toggling Icon
-
-  const animateIcon = () => {
-    setAnimate(!animate);
-  };
-
+function SearchFilter({
+  handleFormSubmit,
+  inputVal,
+  onClick,
+  animate,
+  animateIcon,
+}) {
   return (
     <div className="search">
       <form id="search__form" onSubmit={handleFormSubmit}>
@@ -32,11 +29,11 @@ function SearchFilter({ handleFormSubmit, inputVal }) {
           className="search__option"
           style={!animate ? { display: "none" } : null}
         >
-          <li>Africa</li>
-          <li>America</li>
-          <li>Asia</li>
-          <li>Europe</li>
-          <li>Oceania</li>
+          <li onClick={onClick}>Africa</li>
+          <li onClick={onClick}>America</li>
+          <li onClick={onClick}>Asia</li>
+          <li onClick={onClick}>Europe</li>
+          <li onClick={onClick}>Oceania</li>
         </ul>
       </div>
     </div>

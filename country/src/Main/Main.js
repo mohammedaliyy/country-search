@@ -8,6 +8,10 @@ function Main() {
   const [allFetchedData, setAllFetchedData] = useState([]);
   const [submit, setSubmit] = useState();
   const [inputValue, setInputValue] = useState();
+  const [region, setRegion] = useState();
+  const [invoke, setInvoke] = useState();
+  const [animate, setAnimate] = useState(false);
+  const [indiviually, setIndiviually] = useState(false);
 
   // Fetching each country
   useEffect(() => {
@@ -36,6 +40,7 @@ function Main() {
     e.preventDefault();
     setInputValue(inputRef.current.value);
     setSubmit(true);
+    inputRef.current.value = "";
   };
 
   // Fetching all country
@@ -53,10 +58,64 @@ function Main() {
     fetchAllData();
   }, []);
 
-  return (
+  // Fetching based on region
+  useEffect(() => {
+    async function fetchBaseRegion() {
+      try {
+        const response = await fetch(
+          `https://restcountries.com/v3.1/region/${region}`
+        );
+        const data = await response.json();
+        setFetchedData(data);
+      } catch (error) {
+        console.error(`Error: ${error}`);
+      }
+    }
+
+    if (invoke) {
+      fetchBaseRegion();
+      setInvoke(false);
+    }
+  }, [fetchedData, region, invoke]);
+
+  const handleLiClick = (event) => {
+    setRegion(event.target.textContent.toLowerCase().trim(""));
+    setInvoke(true);
+    setAnimate(false);
+  };
+
+  //   Toggling Icon
+
+  const animateIcon = () => {
+    setAnimate(!animate);
+  };
+
+  // Showing country indiviually
+  const showFutherInfo = () => {
+    setIndiviually(true);
+  };
+
+  const back = () => {
+    setIndiviually(false);
+  };
+
+  return indiviually ? (
+    <div>
+      <button onClick={back}>back</button>Salom
+    </div>
+  ) : (
     <div className="main">
-      <SearchFilter inputVal={inputRef} handleFormSubmit={handleFormSubmit} />
-      <Countries data={fetchedData.length > 0 ? fetchedData : allFetchedData} />
+      <SearchFilter
+        onClick={handleLiClick}
+        inputVal={inputRef}
+        handleFormSubmit={handleFormSubmit}
+        animate={animate}
+        animateIcon={animateIcon}
+      />
+      <Countries
+        onClick={showFutherInfo}
+        data={fetchedData.length > 0 ? fetchedData : allFetchedData}
+      />
     </div>
   );
 }

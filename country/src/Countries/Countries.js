@@ -1,12 +1,15 @@
 import "./Countries.css";
 
-function Countries({ data }) {
-  console.log(data);
+function Countries({ data, onClick }) {
   return (
     <div className="countries">
       {data.map((actualData) => {
         return (
-          <div className="countries__box" key={actualData.name.official}>
+          <div
+            onClick={onClick}
+            className="countries__box"
+            key={actualData.name.official}
+          >
             <div className="countries__img">
               <img src={actualData.flags.svg} alt={actualData.flags.alt} />
             </div>
