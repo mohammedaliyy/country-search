@@ -20,6 +20,7 @@
   outline: none;
   border-radius: 5px;
   background-color: var(--light-mode-white);
+  box-shadow: var(--shadow);
   color: var(--light-mode-text);
   padding: 1.4rem 1.8rem;
 }
@@ -40,6 +41,7 @@
   border: 0;
   border-radius: 5px;
   background-color: var(--light-mode-white);
+  box-shadow: var(--shadow);
   color: var(--light-mode-text);
   padding: 1.4rem 1.8rem;
 }

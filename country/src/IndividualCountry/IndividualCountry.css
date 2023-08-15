@@ -1,0 +1,139 @@
+.individual {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5rem;
+  margin: 5rem 15rem 10rem 15rem;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  box-shadow: var(--shadow);
+}
+
+.individual__country {
+  display: grid;
+  grid-template-columns: 1fr 40%;
+  gap: 5rem;
+}
+
+.individual__img {
+  height: 40rem;
+}
+
+.individual__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  box-shadow: var(--shadow);
+}
+
+.individual__btn button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.2rem;
+  cursor: pointer;
+  border: 0;
+  border-radius: 5px;
+  background-color: var(--light-mode-white);
+  box-shadow: var(--shadow);
+  color: var(--light-mode-text);
+  padding: 1.2rem 2.6rem;
+}
+
+.individual__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.individual__desc {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+
+  padding: 1.6rem 3.6rem 2.6rem 3.6rem;
+  background-color: var(--light-mode-white);
+}
+
+.individual__desc h1 {
+  color: var(--light-mode-text);
+}
+
+.individual__desc ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.individual__desc ul li {
+  display: flex;
+  flex-wrap: wrap;
+
+  margin-bottom: 1rem;
+  gap: 0.4rem;
+}
+.individual__desc ul li span {
+  opacity: 0.7;
+  font-weight: 300;
+}
+
+.countries__border {
+  margin-top: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  gap: 1rem;
+}
+
+.countries__border span {
+  padding: 0.3rem 2.2rem;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.25);
+  opacity: 0.7;
+  font-weight: 300;
+}
+
+@media only screen and (max-width: 1024px) {
+  .individual {
+    margin: 5rem 5rem 10rem 5rem;
+  }
+
+  .individual__desc ul {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .individual__country {
+    flex-direction: column;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-auto-flow: dense;
+  }
+  .individual__info {
+    order: 1;
+  }
+  #map {
+    order: 2;
+  }
+  .individual__desc ul {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .individual__country {
+    grid-template-rows: 2fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 580px) {
+  .individual {
+    margin: 5rem 2rem 5rem 2rem;
+  }
+}

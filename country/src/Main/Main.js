@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import "./Main.css";
 import Countries from "../Countries/Countries";
 import SearchFilter from "../SearchFilter/SearchFilter";
+import IndividualCountry from "../IndividualCountry/IndividualCountry";
 function Main() {
   const inputRef = useRef(null);
   const [fetchedData, setFetchedData] = useState([]);
@@ -12,6 +13,7 @@ function Main() {
   const [invoke, setInvoke] = useState();
   const [animate, setAnimate] = useState(false);
   const [indiviually, setIndiviually] = useState(false);
+  const [countryName, setCountryName] = useState("");
 
   // Fetching each country
   useEffect(() => {
@@ -91,18 +93,23 @@ function Main() {
   };
 
   // Showing country indiviually
-  const showFutherInfo = () => {
-    setIndiviually(true);
+  const showFutherInfo = (countryName) => {
+    if (countryName !== undefined) {
+      setIndiviually(true);
+      setCountryName(countryName);
+    }
   };
 
-  const back = () => {
+  const backToMainPage = () => {
     setIndiviually(false);
   };
 
   return indiviually ? (
-    <div>
-      <button onClick={back}>back</button>Salom
-    </div>
+    <IndividualCountry
+      individually={indiviually}
+      name={countryName}
+      onClick={backToMainPage}
+    />
   ) : (
     <div className="main">
       <SearchFilter

@@ -1,14 +1,21 @@
 import "./Countries.css";
 
 function Countries({ data, onClick }) {
+  const getCountryName = (e) => {
+    const countryName = e.target
+      .closest(".countries__box")
+      ?.getAttribute("data-country-name")
+      .toLowerCase();
+    onClick(countryName);
+  };
   return (
-    <div className="countries">
+    <div className="countries" onClick={getCountryName}>
       {data.map((actualData) => {
         return (
           <div
-            onClick={onClick}
             className="countries__box"
             key={actualData.name.official}
+            data-country-name={actualData.name.official}
           >
             <div className="countries__img">
               <img src={actualData.flags.svg} alt={actualData.flags.alt} />
